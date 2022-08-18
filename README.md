@@ -9,3 +9,12 @@ Then in new Window open from wherever suits
 
 # Usage
 use vagrant up to start 
+
+
+# Useful debugging 
+
+- Error in apahce config
+
+cd /etc/apache2
+
+apache2ctl configtest

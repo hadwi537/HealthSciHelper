@@ -1,2 +1,11 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Request that on windows these text files checked out with Unix
+# Unix line endings. Since Vagrant will share these files directly into the
+# VM, and the VM is running Linux, we don't want the scripts having
+# Windows line endings.
+
+
+setup-database.sql text eol=lf
+test-website.conf text eol=lf

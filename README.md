@@ -18,3 +18,6 @@ use vagrant up to start
 cd /etc/apache2
 
 apache2ctl configtest
+
+# Current Website configuration 
+http://127.0.0.1:8080

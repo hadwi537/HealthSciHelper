@@ -8,5 +8,5 @@ CREATE TABLE papers (
 
 /* Populate papers table */
 INSERT INTO papers VALUES ("COSC326", "Effective Programming");
-INSERT INTO papers VALUES ('COSC349', 'Cloud Computing Architecture')
+INSERT INTO papers VALUES ('COSC349', 'Cloud Computing Architecture');
 INSERT INTO papers VALUES ('COMO303', 'Numerical Methods')

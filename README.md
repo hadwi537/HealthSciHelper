@@ -31,3 +31,30 @@ apache2ctl configtest
 (localhost)
 http://127.0.0.1:8080
 
+
+### Architecture
+
+private network:
+Database
+
+API
+RESTful API (flask)
+
+public:
+webserver 
+
+Ultimetly,
+Provision using ansible to allow integration with AWS 
+
+
+### Next Steps:
+
+Export the conda env so it can be repoduced:
+conda env export > environment.yml
+
+Define the API
+
+get API vm running 
+
+Then look to provision with ansible/aws
+

@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   # Box type to use
   config.vm.box = "ubuntu/focal64"
   
-  #Web server VM configuration
+  #Web server VM configuration (front end)
   config.vm.define "webserver" do |webserver|
     webserver.vm.hostname = "webserver"
 
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
   webserver.vm.provision "shell", path: "build-webserver-vm.sh"
 end
 
-#Section that defines the database server
+#Section that defines the database backend
 config.vm.define "dbserver" do |dbserver|
   dbserver.vm.hostname = "dbserver"
 
@@ -46,4 +46,10 @@ config.vm.define "dbserver" do |dbserver|
 
 end
 
+# this section will define the API.
+# Manage interface between front end and database backend
+
+
 # LocalWords: webserver focal64
+
+

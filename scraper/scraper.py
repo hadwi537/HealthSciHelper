@@ -35,7 +35,7 @@ class Paper:
     The addition of a paper descirption would be a good idea
     '''
 
-    def __init__(self, paper_code, year, title, points, teaching_period, subject, prerequistes = "none", more_info_link='None'):
+    def __init__(self, paper_code, year, title, points, teaching_period, subject, prerequistes = "none", more_info='None'):
         self.paper_code = paper_code
         self.year = year
         self.title = title
@@ -43,7 +43,7 @@ class Paper:
         self.teaching_period = teaching_period
         self.subject = subject
         self.prerequistes = prerequistes
-        self.more_info_link = more_info_link
+        self.more_info = more_info
 
     def __repr__(self):
         return str(self.__dict__)
@@ -78,8 +78,15 @@ for subject in subject_to_html.keys(): #tABLES ARE options for degree + all pape
                 paperPage = requests.get(search)
                 soup = BeautifulSoup(paperPage.content, "html.parser")
                 dl_dict = get_dl(soup)
+
+                prereq = "none"
+                try:
+                    prereq = dl_dict["Prerequisite"]
+                except:
+                    pass
+
                 paper_dict[row.Paper_code] = Paper(row.Paper_code, row.Year, row.Title, row.Points,
-                row.Teaching_period, subject, dl_dict["Prerequisite"], dl_dict["More information link"])
+                row.Teaching_period, subject, prereq, dl_dict)
 
     except Exception as e:
         print("An exception has occured")

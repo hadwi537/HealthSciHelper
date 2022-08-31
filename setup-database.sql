@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS papers;
 
 /* Create the paper table */
 CREATE TABLE papers (

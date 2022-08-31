@@ -17,6 +17,7 @@ Then in new Window open from wherever suits
 ### Usage
 use vagrant up to start 
 
+Opens in /home/vagrant which is different to /vagrant
 
 # Useful debugging 
 

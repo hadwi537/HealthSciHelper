@@ -44,10 +44,27 @@ config.vm.define "dbserver" do |dbserver|
   dbserver.vm.provision "shell", path: "build-dbserver-vm.sh"
   end
 
+  # this section will define the API.
+  # Manage interface between front end and database backend
+  config.vm.define "api" do |api|
+    api.vm.hostname = "api"
+
+    # Private server to allow vms to communicate
+    api.vm.network "private_network", ip: "192.168.2.15"
+
+    api.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
+
+    # add scraper shared folder as it needs to run it
+    api.vm.synced_folder "./scraper", "/scraper"
+
+    # add flask shared folder
+    api.vm.synced_folder "./api", "/api"
+
+    api.vm.provision "shell", path: "build-api-vm.sh"
+  end
 end
 
-# this section will define the API.
-# Manage interface between front end and database backend
+
 
 
 # LocalWords: webserver focal64

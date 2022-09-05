@@ -1,7 +1,9 @@
 import os
+from urllib import request
 
-from flask import Flask
+from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
+
 
 def create_app(test_config=None):
     '''
@@ -12,18 +14,11 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     # app.config.from_mapping(
     #     SECRET_KEY='dev',
-    #     DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
-    # 
-    db_host   = '192.168.2.14'
-    db_name   = 'fvision'
-    db_user   = 'webuser'
-    db_passwd = 'insecure_db_pw'
-    app.config['MYSQL_HOST'] = db_host
-    app.config['MYSQL_USER'] = db_user
-    app.config["MYSQL_PASSWORD"] = db_passwd
-    app.config["MYSQL_DB"] = db_name
-
-    mysql = MySQL(app)
+    
+    # initaliase database connection with factory functions 
+    with app.app_context():
+        from . import db
+        mysql = db.get_db()
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -38,17 +33,20 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
-    @app.route('/papers', methods = ['POST'])
-    def papers():
-        # Allows querying of the database
-        cursor = mysql.connection.cursor()
-        cursor.execute("SELECT * FROM papers")
-        cursor.close()
+    @app.route('/')
+    def index():
+        return render_template('index.html')
     
+    @app.route('/papers', methods = ['GET', 'POST'])
+    def papers():
+        # Displays database contents
+        if request.method == 'GET':
+            cursor = mysql.connection.cursor()
+            cursor.execute("SELECT * FROM papers")
+            data = cursor.fetchall()
+            mysql.connection.commit()
+            cursor.close()
 
+            return render_template('database.html', data=data)
+    
     return app

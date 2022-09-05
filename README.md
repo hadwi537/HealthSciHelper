@@ -59,7 +59,8 @@ get API vm running
 
 Then look to provision with ansible/aws
 
-
-
+Generate Private Keys 
 ### OTHER
+
+# For exporting the conda environment without build specific stuff
 conda env export -n scraper -f scaper.yml --no-builds

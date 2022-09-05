@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
   # Shell commands that specifiy the provisioning of the webserver VM.
   # Note the file test-website.conf is copied from this host to the VM
   # through the shared folder mounted in the VM at /vagrant
-  webserver.vm.provision "shell", path: "build-webserver-vm.sh"
+  webserver.vm.provision "shell", path: "build-webserver-vm-flask.sh"
 end
 
 #Section that defines the database backend
@@ -44,23 +44,23 @@ config.vm.define "dbserver" do |dbserver|
   dbserver.vm.provision "shell", path: "build-dbserver-vm.sh"
   end
 
-  # this section will define the API.
-  # Manage interface between front end and database backend
-  config.vm.define "api" do |api|
-    api.vm.hostname = "api"
+  # this section will define the VM that runs the scaper and upadates the database.
+  config.vm.define "scraper" do |scraper|
+    scraper.vm.hostname = "scraper"
 
     # Private server to allow vms to communicate
-    api.vm.network "private_network", ip: "192.168.2.15"
+    scraper.vm.network "private_network", ip: "192.168.2.15"
 
-    api.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
+    scraper.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
 
-    # add scraper shared folder as it needs to run it
-    api.vm.synced_folder "./scraper", "/scraper"
+    # configure virtualbox provider
+    scraper.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.memory = '2048'
+    end
 
-    # add flask shared folder
-    api.vm.synced_folder "./api", "/api"
+    scraper.vm.provision "shell", path: "build-scraper-vm.sh"
 
-    api.vm.provision "shell", path: "build-api-vm.sh"
   end
 end
 

@@ -3,21 +3,21 @@
 Idea is to promote other oppurnities for Health Science first year 
 Students at Otago University
 
-A website composed of two virtual machines. One managing the site apperence 
-while the other loads a MySQL database
+A website composed of three virtual machines. The first hosts the webserver that deals with user interaction,
+while another holds the paper data while the final one defines the RESTful-api that is used to relate the two serves  
 
  ### Build instuctions 
  To access the remote server, use the remote explorer config.
  Create new ones in the C drive (.ssh) folder 
  Use vagrant ssh-config to get details of new vms
 
+ Opens in /home/vagrant which is different to /vagrant
+
 Then in new Window open from wherever suits
 
 
 ### Usage
 use vagrant up to start 
-
-Opens in /home/vagrant which is different to /vagrant
 
 Running the api
 python api.py
@@ -48,16 +48,15 @@ http://127.0.0.1:8080
 
 private network:
 Database
+Scraper vm
 
 API
-RESTful API (flask)
+RESTful API (flask) to connect the database and the front end webserver
 
 public:
 webserver 
 
-Ultimetly,
-Provision using ansible to allow integration with AWS 
-
+Uses virtualbox provisioning
 
 ### Next Steps:
 
@@ -74,8 +73,8 @@ Generate Private Keys
 
 Call pipenv creation in base directory (possibility)
 
-### OTHER
+### TODO
 
-# For exporting the conda environment without build specific stuff
-conda env export -n scraper -f scaper.yml --no-builds
-
+Initalise the Pipfiles in the root or not?
+Seems cleaner to do it on remote but is slowww
+Could add more memory/cpu to the machine?

@@ -1,27 +1,29 @@
 #!/bin/bash
 
-apt-get update
+apt-get update && sudo apt upgrade
+
+# Need this to get 3.10
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt update
 
 # install python and pip with yes to all prompts
 apt-get install -y python3
 apt-get install -y python3-pip
 apt-get install -y python3.8-venv
 apt-get install -y pipenv
+sudo apt install -y python3.10
 
-# flask requirement SQLdb connection
-apt-get install -y mysql-server
-apt-get install -y libmysqlclient-dev
 
 
 # Change VM's API's configuration to use the shared folder.
 # We want to copy it across so runs with linux permissions
 # and not a network folder
-cp -r /vagrant/api /home/vagrant/
 
 cp -r /vagrant/scraper /home/vagrant/
 
 # then move into the api folder
-cd api
+cd scraper
 
 Assign more swap space so conda can install packages
 sudo fallocate -l 1G /swapfile 
@@ -38,6 +40,3 @@ pipenv install -r requirements.txt
 # start the virtualenv
 pipenv shell
 
-# start flask app from root dir
-cd .. 
-flask --app api --debug run

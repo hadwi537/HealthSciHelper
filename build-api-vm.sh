@@ -18,6 +18,8 @@ apt-get install -y libmysqlclient-dev
 # and not a network folder
 cp -r /vagrant/api /home/vagrant/
 
+cp -r /vagrant/scraper /home/vagrant/
+
 # then move into the api folder
 cd api
 
@@ -31,6 +33,11 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 
 # create virtal environment
-python3 -m venv .venv
-
 pipenv install -r requirements.txt
+
+# start the virtualenv
+pipenv shell
+
+# start flask app from root dir
+cd .. 
+flask --app api --debug run

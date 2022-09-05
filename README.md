@@ -27,6 +27,13 @@ cd /etc/apache2
 
 apache2ctl configtest
 
+recommend using vsode with the remote ssh extension. 
+Simply change to the directory with the Vagrantfile
+and get the ssh-config using 
+~/vagrant/machine$ vagrant ssh-config
+Then copy and paste the ouput into an ssh config file.
+(default at ~/.ssh/config)
+
 # Current Website configuration 
 
 (localhost)
@@ -64,3 +71,4 @@ Generate Private Keys
 
 # For exporting the conda environment without build specific stuff
 conda env export -n scraper -f scaper.yml --no-builds
+

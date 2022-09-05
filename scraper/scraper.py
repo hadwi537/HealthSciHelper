@@ -94,4 +94,4 @@ for subject in subject_to_html.keys(): #tABLES ARE options for degree + all pape
 
 pprint(paper_dict)
 df = pd.DataFrame([paper_dict])
-df.to_csv('paper_dict.csv')
+df.to_csv('output/paper_dict.csv')

@@ -43,7 +43,7 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
-    @app.route('/papers', methods = 'POST')
+    @app.route('/papers', methods = ['POST'])
     def papers():
         # Allows querying of the database
         cursor = mysql.connection.cursor()

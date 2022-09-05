@@ -50,6 +50,8 @@ private network:
 Database
 Scraper vm
 
+LAMP Stack
+
 API
 RESTful API (flask) to connect the database and the front end webserver
 

@@ -51,4 +51,10 @@ pip install Flask
 pip install flask_mysqldb
 
 # start flask app
-flask --app api --debug run
+# flask --app api --debug run
+
+# get webapp running on webserver using Wsgi
+# i.e run with python interpreter then serve the page using 
+# Apache with WSGI
+$ sudo apt-get install libapache2-mod-wsgi python-dev
+

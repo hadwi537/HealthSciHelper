@@ -45,4 +45,7 @@ def create_app(test_config=None):
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM papers")
         cursor.close()
+
+    
+
     return app

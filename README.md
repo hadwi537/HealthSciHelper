@@ -19,6 +19,10 @@ use vagrant up to start
 
 Opens in /home/vagrant which is different to /vagrant
 
+Running the api
+python api.py
+
+
 # Useful debugging 
 
 - Error in apahce config
@@ -67,6 +71,9 @@ get API vm running
 Then look to provision with ansible/aws
 
 Generate Private Keys 
+
+Call pipenv creation in base directory (possibility)
+
 ### OTHER
 
 # For exporting the conda environment without build specific stuff

@@ -20,10 +20,12 @@ th, td {
 
 <p>This page demonstrates that the webserver on your VM is generating content.</p>
 
-<p>You likely now want to <a href="test-database.php">proceed to your webserver's
-database connection testing page</a>. However, note that if there is a network problem reaching the database, the database connection testing page will spend a minute or so waiting before it produces any content.</p>
-
-<p>For your assignment work, your project should begin on this page. The only reason the database testing page was not placed within <kbd>index.php</kbd> was to assist you in debugging any network problems you might be having.</p>
+<p>
+  Use this link to access the paper database: 
+  <a href="test-database.php">
+    paper database
+  </a>
+</p>
 
 </body>
 </html>

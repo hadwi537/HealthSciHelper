@@ -59,3 +59,7 @@ get API vm running
 
 Then look to provision with ansible/aws
 
+
+
+### OTHER
+conda env export -n scraper -f scaper.yml --no-builds

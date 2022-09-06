@@ -29,10 +29,8 @@ The scraper virtual machine controls the running of the webscapers to automatica
 universities site in an automated fashion using cron timers. This virtual machine then updates the database backend 
 with the newly scraped paper information. 
 
-Diagram showing architecture below
-
-![](https://github.com/hadwi537/HealthSciHelper/blob/master/docs-assets/Diagram.PNG)
-![alt text](https://github.com/hadwi537/HealthSciHelper/tree/main/docs-assets/Diagram.png?raw=true)
+## Diagram of architecture 
+![alt text](https://github.com/hadwi537/HealthSciHelper/blob/main/docs-assets/Diagram.PNG?raw=true)
 # Useful debugging 
 
 recommend using vsode with the remote ssh extension. 

@@ -7,7 +7,7 @@ export MYSQL_PWD='insecure_mysqlroot_pw'
 echo "mysql-server mysql-server/root_password password $MYSQL_PWD" | debconf-set-selections 
 echo "mysql-server mysql-server/root_password_again password $MYSQL_PWD" | debconf-set-selections
 
-#Install the database server
+# Install the database server
 apt-get -y install mysql-server
 # Create database
 echo "CREATE DATABASE fvision;" | mysql

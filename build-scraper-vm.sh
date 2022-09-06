@@ -7,8 +7,8 @@ apt-get update && sudo apt upgrade
 # to the root user
 
 # Cron expression
-# exectues every minute
-cronExpression="* * * * * pipenv run scraper/scraper.py"
+# Executes every 2nd day at midnight every month
+cronExpression="0 0 2 * * pipenv run scraper/scraper.py"
 
 # Escape all the asterisks so we can grep for it
 cron_escaped=$(echo "$cronExpression" | sed s/\*/\\\\*/g)

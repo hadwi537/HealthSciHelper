@@ -27,6 +27,13 @@ th, td {
   </a>
 </p>
 
+<p>
+  Use this link to interact via SQL commands with the database: 
+  <a href="refined-database.php">
+    paper customised database
+  </a>
+</p>
+
 </body>
 </html>
 

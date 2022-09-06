@@ -98,4 +98,4 @@ df = pd.DataFrame([paper_dict])
 df.to_csv('output/paper_dict.csv')
 
 # connect to database to update its info
-connect_to_database()
+connect_to_database(df)

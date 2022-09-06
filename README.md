@@ -43,9 +43,9 @@ Simple data structure - just one table of papers
         string year
         string title
         string points
-        string teaching_period
+        list: string teaching_period
         string subject
-        list: String prerequistes
+        string prerequistes
         dict more_info
     }
 ```

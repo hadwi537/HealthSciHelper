@@ -15,21 +15,23 @@ while another holds the paper data while the final one defines the RESTful-api t
 
 Then in new Window open from wherever suits
 
-
 ### Usage
-use vagrant up to start 
+run 'vagrant up' in the terminal to create the application
 
-Running the api
-python api.py
+### Architecture
 
+HealthSciHelper is based off a LAMP stack web architecture with a few differences.
+First, the front end and back end are hosted on Linux virtual machines that are provisined using vagrant with virtualbox.
+A public facing webserver front end controls and hosts (via apache) the display and user interaction. 
+This webserver follows a typical client-server relation.
 
+This webserver then accesses via a private network, a backend, database server.
+This mySQL database contains univeristy paper information, updated every time step by the 'scraper' virtual machine.
+
+The scraper virtual machine controls the running of the webscapers to automatically scrape data from the selected
+universities site in an automated fashion using cron timers. This virtual machine then updates the database backend 
+with the newly scraped paper information. 
 # Useful debugging 
-
-- Error in apahce config
-
-cd /etc/apache2
-
-apache2ctl configtest
 
 recommend using vsode with the remote ssh extension. 
 Simply change to the directory with the Vagrantfile
@@ -43,42 +45,14 @@ Then copy and paste the ouput into an ssh config file.
 (localhost)
 http://127.0.0.1:8080
 
-
-### Architecture
-
-private network:
-Database
-Scraper vm
-
-LAMP Stack
-
-API
-RESTful API (flask) to connect the database and the front end webserver
-
-public:
-webserver 
-
-Uses virtualbox provisioning
-
 ### Next Steps:
 
-Export the conda env so it can be repoduced:
-conda env export > environment.yml
+* Generate Private Keys and redifine/improve security
 
-Define the API
+* Call pipenv creation in base directory (possibility)
 
-get API vm running 
+* Initalise the Pipfiles in the root or not?
+* Seems cleaner to do it on remote but is slowww
+* Could add more memory/cpu to the machine?
 
-Then look to provision with ansible/aws
-
-Generate Private Keys 
-
-Call pipenv creation in base directory (possibility)
-
-### TODO
-
-Initalise the Pipfiles in the root or not?
-Seems cleaner to do it on remote but is slowww
-Could add more memory/cpu to the machine?
-
-Note Log in as vagrant user
+* Note Log in as vagrant user

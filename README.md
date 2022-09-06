@@ -45,7 +45,7 @@ Simple data structure - just one table of papers
         string points
         list: string teaching_period
         string subject
-        string prerequistes
+        list: string prerequistes
         dict more_info
     }
 ```
@@ -74,3 +74,5 @@ http://127.0.0.1:8080
 * Could add more memory/cpu to the machine?
 
 * Note Log in as vagrant user
+
+* Some papers require some number of 'generic' points, i.e non-specific points

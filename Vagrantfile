@@ -41,7 +41,7 @@ config.vm.define "dbserver" do |dbserver|
   dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
   
   # provisioning script
-  dbserver.vm.provision "shell", path: "build-dbserver-vm.sh"
+  dbserver.vm.provision "shell", path: "build-dbserver-mongo-vm.sh"
   end
 
   # this section will define the VM that runs the scaper and upadates the database.

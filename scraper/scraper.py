@@ -4,8 +4,8 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from pprint import pprint
 from connect_to_database import connect_to_database
-
-# This will end up on a vm at some point
+import re
+import os
 
 subject_to_html = dict()
 
@@ -36,13 +36,14 @@ class Paper:
     The addition of a paper descirption would be a good idea
     '''
 
-    def __init__(self, paper_code, year, title, points, teaching_period, subject, prerequistes = "none", more_info='None'):
+    def __init__(self, paper_code, year, title, points, teaching_period, subject, prereq_text, prerequistes = "none", more_info='None'):
         self.paper_code = paper_code
         self.year = year
         self.title = title
         self.points = points
         self.teaching_period = teaching_period
         self.subject = subject
+        self.prereq_text = prereq_text
         self.prerequistes = prerequistes
         self.more_info = more_info
 
@@ -81,20 +82,39 @@ for subject in subject_to_html.keys(): #tABLES ARE options for degree + all pape
                 dl_dict = get_dl(soup)
 
                 prereq = "none"
+                prereq_list = []
                 try:
                     prereq = dl_dict["Prerequisite"]
+                    # parse the paper codes
+                    # Search for all capitalised four letter sequences
+                    # Search for all 3 number sequences
+                    pattern =  "[A-Z]{4}[\s]?[0-9]{3}" 
+
+                    paper_codes = re.findall(pattern, prereq)
+                    prereq_list = []
+                    for paper_code in paper_codes:
+                        cleaned_paper_code = paper_code.replace(" ", "") #remove all whitespace
+                        prereq_list.append(cleaned_paper_code)
                 except:
                     pass
 
-                paper_dict[row.Paper_code] = Paper(row.Paper_code, row.Year, row.Title, row.Points,
-                row.Teaching_period, subject, prereq, dl_dict)
+                paper_dict[row.Paper_code] = [row.Paper_code, row.Year, row.Title, row.Points,
+                row.Teaching_period, subject, prereq, prereq_list, dl_dict]
 
     except Exception as e:
         print("An exception has occured")
         print(e)
+    
+    if (len(paper_dict) > 10):
+        break
 
-pprint(paper_dict)
-df = pd.DataFrame([paper_dict])
+df = pd.DataFrame.from_dict(paper_dict, orient='index')
+
+try:
+    os.mkdir('output')
+except OSError as error:
+    print(error)
+
 df.to_csv('output/paper_dict.csv')
 
 # connect to database to update its info

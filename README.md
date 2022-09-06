@@ -23,7 +23,7 @@ A public facing webserver front end controls and hosts (via apache) the display 
 This webserver follows a typical client-server relation.
 
 This webserver then accesses via a private network, a backend, database server.
-This mySQL database contains univeristy paper information, updated every time step by the 'scraper' virtual machine.
+This noSQL, mongodb database contains univeristy paper information, updated every time step by the 'scraper' virtual machine.
 
 The scraper virtual machine controls the running of the webscapers to automatically scrape data from the selected
 universities site in an automated fashion using cron timers. This virtual machine then updates the database backend 

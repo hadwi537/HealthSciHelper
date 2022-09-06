@@ -2,10 +2,11 @@ import requests
 from html.parser import HTMLParser
 import pandas as pd
 from bs4 import BeautifulSoup
-from pprint import pprint
-from connect_to_database import connect_to_database
+from connect_to_mongo_db import connect_to_mongo_db
 import re
 import os
+import json 
+
 
 subject_to_html = dict()
 
@@ -62,7 +63,7 @@ def get_dl(soup):
 
 
 subject_paperInfo = dict()
-paper_dict = dict()
+paper_list = list()
 for subject in subject_to_html.keys(): #tABLES ARE options for degree + all papers
     search = "http://www.otago.ac.nz" + subject_to_html[subject]
     paperHTML =  requests.get(search)
@@ -98,24 +99,22 @@ for subject in subject_to_html.keys(): #tABLES ARE options for degree + all pape
                 except:
                     pass
 
-                paper_dict[row.Paper_code] = [row.Paper_code, row.Year, row.Title, row.Points,
-                row.Teaching_period, subject, prereq, prereq_list, dl_dict]
+                # for mongodb get rid of paper =
+                paper_list.append({'paper_code': row.Paper_code, 'year': row.Year, 'title': row.Title, 'points': row.Points, 'teaching_period': row.Teaching_period, 
+                'subject': subject, 'prereq_string': prereq, 'prereq_list': prereq_list, 'dl_dict': dl_dict})
 
     except Exception as e:
         print("An exception has occured")
         print(e)
     
-    if (len(paper_dict) > 10):
+    if (len(paper_list) > 10):
         break
 
-df = pd.DataFrame.from_dict(paper_dict, orient='index')
 
-try:
-    os.mkdir('output')
-except OSError as error:
-    print(error)
 
-df.to_csv('output/paper_dict.csv')
-
+# then just pass this to similar with curdInsert
+# will collection.insert_one(json_file)
+data = json.dumps(paper_list, indent = 3)
+print(data)
 # connect to database to update its info
-connect_to_database(df)
+connect_to_mongo_db(paper_list)

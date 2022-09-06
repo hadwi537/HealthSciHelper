@@ -31,6 +31,24 @@ with the newly scraped paper information.
 
 ## Diagram of architecture 
 ![alt text](https://github.com/hadwi537/HealthSciHelper/blob/main/docs-assets/Diagram.PNG?raw=true)
+
+# Data Structure
+
+Simple data structure - just one table of papers 
+
+```mermaid
+    erDiagram
+    Store {
+        string paper_code
+        string year
+        string title
+        string points
+        string teaching_period
+        string subject
+        list[String] prerequistes
+        dict more_info
+    }
+```
 # Useful debugging 
 
 recommend using vsode with the remote ssh extension. 

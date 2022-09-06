@@ -80,3 +80,5 @@ Call pipenv creation in base directory (possibility)
 Initalise the Pipfiles in the root or not?
 Seems cleaner to do it on remote but is slowww
 Could add more memory/cpu to the machine?
+
+Note Log in as vagrant user

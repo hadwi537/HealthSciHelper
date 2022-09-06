@@ -2,6 +2,36 @@
 
 apt-get update && sudo apt upgrade
 
+# Cron for scheduling 
+# Adds a crontab for running scrapers every minute (currently)
+# to the root user
+
+# Cron expression
+# exectues every minute
+cronExpression="* * * * * pipenv run scraper/scraper.py"
+
+# Escape all the asterisks so we can grep for it
+cron_escaped=$(echo "$cronExpression" | sed s/\*/\\\\*/g)
+
+# Check if cron job already in crontab
+crontab -l | grep "${cron_escaped}"
+if [[ $? -eq 0 ]] ;
+  then
+    echo "Crontab already exists. Exiting..."
+    exit
+  else
+    # Write out current crontab into temp file
+    crontab -l > mycron
+    # Append new cron into cron file
+    echo "$cronExpression" >> mycron
+
+    # Install new cron file
+    crontab mycron
+    # Remove temp file
+    rm mycron
+fi
+
+
 # Need this to get 3.10
 sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:deadsnakes/ppa -y
@@ -36,7 +66,7 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 # create virtal environment
 pipenv install -r requirements.txt
+pipenv install mysql-connector-python
 
 # start the virtualenv
-pipenv shell
-
+# pipenv shell

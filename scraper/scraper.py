@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 import pandas as pd
 from bs4 import BeautifulSoup
 from pprint import pprint
+from connect_to_database import connect_to_database
 
 # This will end up on a vm at some point
 
@@ -95,3 +96,6 @@ for subject in subject_to_html.keys(): #tABLES ARE options for degree + all pape
 pprint(paper_dict)
 df = pd.DataFrame([paper_dict])
 df.to_csv('output/paper_dict.csv')
+
+# connect to database to update its info
+connect_to_database()

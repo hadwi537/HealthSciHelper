@@ -31,8 +31,8 @@ with the newly scraped paper information.
 
 Diagram showing architecture below
 
-![](https://github.com/hadwi537/HealthSciHelper/blob/master/docs-assets/Diagram.png?raw=true)
-
+![](https://github.com/hadwi537/HealthSciHelper/blob/master/docs-assets/Diagram.PNG)
+![alt text](https://github.com/hadwi537/HealthSciHelper/tree/main/docs-assets/Diagram.png?raw=true)
 # Useful debugging 
 
 recommend using vsode with the remote ssh extension. 

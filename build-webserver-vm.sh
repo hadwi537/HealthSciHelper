@@ -16,4 +16,8 @@ systemctl reload apache2
 service apache2 reload
 
 # get npm to install echarts
-apt-get install npm -y
+# might not need 
+# apt-get install npm -y
+
+# get echarts
+# npm install echarts --save

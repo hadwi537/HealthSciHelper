@@ -34,6 +34,13 @@ th, td {
   </a>
 </p>
 
+<p>
+  Use this link to see a visualisation of the data: 
+  <a href="graph.html">
+    data visualisation
+  </a>
+</p>
+
 </body>
 </html>
 

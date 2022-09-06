@@ -1,10 +1,7 @@
 # HealthSciHelper
  
-Idea is to promote other oppurnities for Health Science first year 
-Students at Otago University
-
-A website composed of three virtual machines. The first hosts the webserver that deals with user interaction,
-while another holds the paper data while the final one defines the RESTful-api that is used to relate the two serves  
+This project aims to promote other oppurtunities for Health Science first year 
+Students at Otago University. 
 
  ### Build instuctions 
  To access the remote server, use the remote explorer config.
@@ -18,7 +15,7 @@ Then in new Window open from wherever suits
 ### Usage
 run 'vagrant up' in the terminal to create the application
 
-### Architecture
+# Architecture
 
 HealthSciHelper is based off a LAMP stack web architecture with a few differences.
 First, the front end and back end are hosted on Linux virtual machines that are provisined using vagrant with virtualbox.
@@ -31,6 +28,11 @@ This mySQL database contains univeristy paper information, updated every time st
 The scraper virtual machine controls the running of the webscapers to automatically scrape data from the selected
 universities site in an automated fashion using cron timers. This virtual machine then updates the database backend 
 with the newly scraped paper information. 
+
+Diagram showing architecture below
+
+![](https://github.com/hadwi537/HealthSciHelper/blob/master/docs-assets/Diagram.png?raw=true)
+
 # Useful debugging 
 
 recommend using vsode with the remote ssh extension. 

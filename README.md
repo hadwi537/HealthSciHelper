@@ -1,3 +1,5 @@
+[![](https://data.jsdelivr.com/v1/package/npm/echarts/badge)](https://www.jsdelivr.com/package/npm/echarts)
+
 # HealthSciHelper
  
 This project aims to promote other oppurtunities for Health Science first year 

@@ -63,4 +63,5 @@ sudo apt install -y python3.10
 
 pipenv install pymongo[srv]
 
-# TODO insert default values
+# insert default values
+pipenv run /vagrant/setup-mongodb.py

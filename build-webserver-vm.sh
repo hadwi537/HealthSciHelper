@@ -14,3 +14,6 @@ a2dissite 000-default
 # reload webserver config and pick up changes
 systemctl reload apache2
 service apache2 reload
+
+# get npm to install echarts
+apt-get install npm -y

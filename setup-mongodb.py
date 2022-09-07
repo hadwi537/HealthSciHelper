@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 
-uri = "mongodb://vagrant:vagrant@localhost:27017/admin"
+uri = "mongodb://vagrant:vagrant@localhost:3000/admin"
 
 
 def connect_to_mongo_db():

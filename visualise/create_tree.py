@@ -3,7 +3,8 @@ from pymongo import MongoClient
 # could be this 
 # uri = "mongodb://vagrant:vagrant@192.168.2.14:27017/admin"
 
-uri = "mongodb://vagrant:vagrant@localhost:27017/admin"
+# test this using the command line 
+uri = "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"
 
 
 def bfs(paper_code, coll):

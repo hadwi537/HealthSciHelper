@@ -105,3 +105,7 @@ http://127.0.0.1:8080
 * todo: plan is to create dsplot.graph in scraper instead
 i.e it will generate the data, insert it, then create the graph then pass graph to db where it can 
 be quiered by webserver
+
+* ensure that the windows defender etc is turned off and there are no vms in the vm folder as these will cause collisions
+
+* to connect to the database using mongosh from command line use mongosh "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"

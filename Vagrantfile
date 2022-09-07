@@ -13,6 +13,9 @@ Vagrant.configure("2") do |config|
 config.vm.define "dbserver" do |dbserver|
   dbserver.vm.hostname = "dbserver"
 
+  # Allows another machine to connect from port 3002 to port 3000
+  dbserver.vm.network "forwarded_port", guest: 3000, host: 3002, auto_correct: true
+
   # Note differnet IP from webserver
   dbserver.vm.network "private_network", ip: "192.168.2.14"
 
@@ -28,7 +31,7 @@ config.vm.define "dbserver" do |dbserver|
 
     # allows host computer to connect to IP address 127.0.0.1 port 8080, and that network
     # request will reach the webserver VM's port 80
-    webserver.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+    webserver.vm.network "forwarded_port", guest: 3000, host: 3001, auto_correct: true
 
     # Setup a private network to allow VMs to communicate with each other
     # a form such as 192.168.2.x for x 
@@ -48,6 +51,8 @@ end
   config.vm.define "scraper" do |scraper|
     scraper.vm.hostname = "scraper"
 
+    # Allows another machine to connect from port 3003 to port 3000
+    scraper.vm.network "forwarded_port", guest: 3000, host: 3003, auto_correct: true
 
     # Private server to allow vms to communicate
     scraper.vm.network "private_network", ip: "192.168.2.15"

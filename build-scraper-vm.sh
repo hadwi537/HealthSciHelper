@@ -52,6 +52,9 @@ sudo apt install -y python3.10
 
 cp -r /vagrant/scraper /home/vagrant/
 
+# folder to build visualisation from
+cp -r /vagrant/visualise /home/vagrant/
+
 # then move into the api folder
 cd scraper
 
@@ -67,6 +70,13 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 # create virtal environment
 pipenv install -r requirements.txt
 pipenv install mysql-connector-python
+
+# install package
+apt-get install -y graphviz libgraphviz-dev 
+
+pipenv install dsplot
+
+pipenv install pymongo
 
 # start the virtualenv
 # pipenv shell

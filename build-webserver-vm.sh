@@ -39,10 +39,10 @@ sudo apt install -y python3.10
 # get the library
 apt-get install -y graphviz libgraphviz-dev 
 
-cd visualise
+# cd visualise
 
-# install package
-pipenv install dsplot
+# # install package
+# sudo pipenv install dsplot
 
-pipenv install pymongo
+# sudo pipenv install pymongo
 

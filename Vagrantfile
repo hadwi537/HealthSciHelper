@@ -8,7 +8,22 @@ Vagrant.configure("2") do |config|
 
   # Box type to use
   config.vm.box = "ubuntu/focal64"
+
+#Section that defines the database backend
+config.vm.define "dbserver" do |dbserver|
+  dbserver.vm.hostname = "dbserver"
+
+  dbserver.vm.network "forwarded_port", guest: 80, host: 8081, host_ip: "127.0.0.1"
+
+  # Note differnet IP from webserver
+  dbserver.vm.network "private_network", ip: "192.168.2.14"
+
+  dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
   
+  # provisioning script
+  dbserver.vm.provision "shell", path: "build-dbserver-mongo-vm.sh"
+  end
+
   #Web server VM configuration (front end)
   config.vm.define "webserver" do |webserver|
     webserver.vm.hostname = "webserver"
@@ -31,22 +46,11 @@ Vagrant.configure("2") do |config|
   webserver.vm.provision "shell", path: "build-webserver-vm.sh"
 end
 
-#Section that defines the database backend
-config.vm.define "dbserver" do |dbserver|
-  dbserver.vm.hostname = "dbserver"
-
-  # Note differnet IP from webserver
-  dbserver.vm.network "private_network", ip: "192.168.2.14"
-
-  dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
-  
-  # provisioning script
-  dbserver.vm.provision "shell", path: "build-dbserver-mongo-vm.sh"
-  end
-
   # this section will define the VM that runs the scaper and upadates the database.
   config.vm.define "scraper" do |scraper|
     scraper.vm.hostname = "scraper"
+
+    scraper.vm.network "forwarded_port", guest: 80, host: 8082, host_ip: "127.0.0.1"
 
     # Private server to allow vms to communicate
     scraper.vm.network "private_network", ip: "192.168.2.15"

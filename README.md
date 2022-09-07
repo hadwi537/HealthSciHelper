@@ -102,4 +102,6 @@ http://127.0.0.1:8080
 * for visualisation, for a certain paper, get all its children etc
 * then show as radial tree (can do with mongodb request)
 
-* todo: plan is to create dsplot.graph in webserver
+* todo: plan is to create dsplot.graph in scraper instead
+i.e it will generate the data, insert it, then create the graph then pass graph to db where it can 
+be quiered by webserver

@@ -18,9 +18,14 @@
 
     <body>
     <?php 
-        $command = escapeshellcmd('/home/vagrant/visualise/plot_graph.py');
-        $output = shell_exec($command);
-        echo $output;
+        // Establish MongoDB Connection
+        $uri = "mongodb://vagrant:vagrant@localhost:27017"
+        $connection = new MongoDB\Client($uri);
+        $databaseMongo = $connection->selectDatabase(Config::get('admin'));
+        $images = $databaseMongo->selectCollection("images");
+
+        $image = $images->find();
+        
         ?>
     </body>
 </html>

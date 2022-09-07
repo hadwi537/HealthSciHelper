@@ -2,6 +2,17 @@
 
 apt-get update && sudo apt upgrade
 
+# Change VM's API's configuration to use the shared folder.
+# We want to copy it across so runs with linux permissions
+# and not a network folder
+
+cp -r /vagrant/vm-scraper/src/scraper /home/vagrant/
+
+cd scraper
+
+# create virtal environment
+pipenv install -r requirements.txt
+
 # Cron for scheduling 
 # Adds a crontab for running scrapers every minute (currently)
 # to the root user
@@ -12,6 +23,7 @@ cronExpression="0 0 2 * * pipenv run scraper/scraper.py"
 
 # Escape all the asterisks so we can grep for it
 cron_escaped=$(echo "$cronExpression" | sed s/\*/\\\\*/g)
+
 
 # Check if cron job already in crontab
 crontab -l | grep "${cron_escaped}"
@@ -45,19 +57,6 @@ apt-get install -y pipenv
 sudo apt install -y python3.10
 
 
-
-# Change VM's API's configuration to use the shared folder.
-# We want to copy it across so runs with linux permissions
-# and not a network folder
-
-cp -r /vagrant/scraper /home/vagrant/
-
-# folder to build visualisation from
-cp -r /vagrant/visualise /home/vagrant/
-
-# then move into the api folder
-cd scraper
-
 Assign more swap space so conda can install packages
 sudo fallocate -l 1G /swapfile 
 sudo chmod 600 /swapfile 
@@ -67,17 +66,6 @@ sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 
-# create virtal environment
-pipenv install -r requirements.txt
-pipenv install mysql-connector-python
 
-# install package
-apt-get install -y graphviz libgraphviz-dev 
-
-pipenv install dsplot
-
-pipenv install pymongo
-pipenv install Pillow
-pipenv install matplotlib
 
 

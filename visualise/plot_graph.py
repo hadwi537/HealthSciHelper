@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 
-# import graphviz as gv
-# import pylab
 
 from dsplot.graph import Graph
-from connect_to_mongo_db import get_prereq_list
+from create_tree import get_prereq_list
 
 
 graph = Graph(
@@ -16,10 +14,14 @@ graph.plot()
 
 # this will then send the image to 
 
-g = Graph(
-    get_prereq_list('MATH306'), directed=True
-)
+def create_tree(paper_code):
+    g = Graph(
+        get_prereq_list(paper_code), directed=True
+    )
 
-g.plot()
+    g.plot()
 
-g.savefig(filename='g.png')
+    g.savefig(filename='g.png')
+
+if __name__ == '__main__':
+    create_tree('MATH306')

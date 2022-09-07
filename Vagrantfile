@@ -13,8 +13,6 @@ Vagrant.configure("2") do |config|
 config.vm.define "dbserver" do |dbserver|
   dbserver.vm.hostname = "dbserver"
 
-  dbserver.vm.network "forwarded_port", guest: 80, host: 8081, host_ip: "127.0.0.1"
-
   # Note differnet IP from webserver
   dbserver.vm.network "private_network", ip: "192.168.2.14"
 
@@ -50,7 +48,6 @@ end
   config.vm.define "scraper" do |scraper|
     scraper.vm.hostname = "scraper"
 
-    scraper.vm.network "forwarded_port", guest: 80, host: 8082, host_ip: "127.0.0.1"
 
     # Private server to allow vms to communicate
     scraper.vm.network "private_network", ip: "192.168.2.15"

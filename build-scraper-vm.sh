@@ -77,6 +77,7 @@ apt-get install -y graphviz libgraphviz-dev
 pipenv install dsplot
 
 pipenv install pymongo
+pipenv install Pillow
+pipenv install matplotlib
 
-# start the virtualenv
-# pipenv shell
+

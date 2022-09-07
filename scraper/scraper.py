@@ -114,7 +114,7 @@ for subject in subject_to_html.keys(): #tABLES ARE options for degree + all pape
 
 # then just pass this to similar with curdInsert
 # will collection.insert_one(json_file)
-data = json.dumps(paper_list, indent = 3)
-print(data)
+# data = json.dumps(paper_list, indent = 3)
+# print(data)
 # connect to database to update its info
 connect_to_mongo_db(paper_list)

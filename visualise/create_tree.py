@@ -1,6 +1,8 @@
 from pymongo import MongoClient
 
-# may need to change to 0.0.0.0
+# could be this 
+# uri = "mongodb://vagrant:vagrant@192.168.2.14:27017/admin"
+
 uri = "mongodb://vagrant:vagrant@localhost:27017/admin"
 
 

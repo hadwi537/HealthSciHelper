@@ -50,11 +50,13 @@ EOB
 
 ## Listen on any interface so webserver can connect
 # use sed to search and replace bindIp variable
-# connect to localhost by default
-sed -i "s,\\(^[[:blank:]]*bindIp:\\) .*,\\1 0.0.0.0," /etc/mongod.conf
+# connect to localhost
+# sed -i "s,\\(^[[:blank:]]*bindIp:\\) .*,\\1 0.0.0.0," /etc/mongod.conf
 
 # sed -i "s,\\(^[[:blank:]]*bindIp:\\) .*,\\1 127.0.0.1,192.168.2.11,192.168.2.15," /etc/mongod.conf
 # sed -i 's/^\( *bindIp *: *\).*/\1 0.0.0.0/'
+
+cp /vagrant/mongod.conf /etc/
 
 
 echo "-------------------------- RESTARTED MONGOD --------------------------"

@@ -109,3 +109,7 @@ be quiered by webserver
 * ensure that the windows defender etc is turned off and there are no vms in the vm folder as these will cause collisions
 
 * to connect to the database using mongosh from command line use mongosh "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"
+
+* moving to use express
+
+* now use npm

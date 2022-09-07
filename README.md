@@ -17,6 +17,23 @@ Then in new Window open from wherever suits
 ### Usage
 run 'vagrant up' in the terminal to create the application
 
+# Interacting with the database
+vagrant ssh dbserver
+run 
+$ systemctl status mongodb 
+
+to ensure mongodb is running
+
+then use mongosh to enter and check mongodb. 
+To see papers in collection use commands:
+test> use admin
+admin> admin.auth('vagrant', 'vagrant')
+admin> show collections
+admin> db.papers.find()
+
+to display all collections names and contents of the papers collection
+
+
 # Architecture
 
 HealthSciHelper is based off a LAMP stack web architecture with a few differences.
@@ -78,3 +95,6 @@ http://127.0.0.1:8080
 * Note Log in as vagrant user
 
 * Some papers require some number of 'generic' points, i.e non-specific points
+
+* for visualisation, for a certain paper, get all its children etc
+* then show as radial tree (can do with mongodb request)

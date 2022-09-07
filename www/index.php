@@ -36,7 +36,7 @@ th, td {
 
 <p>
   Use this link to see a visualisation of the data: 
-  <a href="graph.html">
+  <a href="visualisation.html">
     data visualisation
   </a>
 </p>

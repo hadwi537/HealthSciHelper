@@ -7,7 +7,7 @@ uri = "mongodb://vagrant:vagrant@localhost:27017/admin"
 def connect_to_mongo_db(data):
     # Replace the uri string with your MongoDB deployment's connection string.
     client = MongoClient(uri)
-
+    
     # database and collection code goes here
     db = client.admin
     coll = db.papers

@@ -27,3 +27,6 @@ def connect_to_mongo_db():
     print(result.inserted_ids)
     # Close the connection to MongoDB when you're done.
     client.close()
+
+if __name__ == '__main__':
+    connect_to_mongo_db()

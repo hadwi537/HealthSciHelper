@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
 
 # Adding Repo
 echo "-------------------------- ADDING REPO -------------------------------------"
@@ -12,6 +13,7 @@ sudo apt update
 
 echo "-------------------------- INSTALL PACKAGES --------------------------"
 apt-get install -y mongodb-org=4.4.8 mongodb-org-server=4.4.8 mongodb-org-shell=4.4.8 mongodb-org-mongos=4.4.8 mongodb-org-tools=4.4.8
+apt-get install -y mongodb-mongosh
 
 # Start and Enable Mongod - not work  - CPU not support this version
 echo "-------------------------- START & ENABLE MONGOD --------------------------"
@@ -19,7 +21,6 @@ sudo systemctl enable --now mongod
 
 sleep 20
 
-# Create user - doesn't work
 echo "-------------------------- CREATE VAGRANT USER --------------------------"
 mongosh << BLK
 use admin
@@ -61,7 +62,7 @@ apt-get install -y python3.8-venv
 apt-get install -y pipenv
 sudo apt install -y python3.10
 
-pipenv install pymongo[srv]
+pipenv install pymongo
 
 # insert default values
-pipenv run /vagrant/setup-mongodb.py
+pipenv run python /vagrant/setup-mongodb.py

@@ -46,3 +46,6 @@ sudo pipenv install dsplot
 
 sudo pipenv install pymongo
 
+# for developing node.js
+sudo apt-get install -y nodejs
+

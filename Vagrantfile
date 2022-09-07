@@ -22,7 +22,7 @@ config.vm.define "dbserver" do |dbserver|
   dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
   
   # provisioning script
-  dbserver.vm.provision "shell", path: "build-dbserver-mongo-vm.sh"
+  dbserver.vm.provision "shell", path: "vm-db/build-dbserver-mongo-vm.sh"
   end
 
   #Web server VM configuration (front end)
@@ -44,7 +44,7 @@ config.vm.define "dbserver" do |dbserver|
   # Shell commands that specifiy the provisioning of the webserver VM.
   # Note the file test-website.conf is copied from this host to the VM
   # through the shared folder mounted in the VM at /vagrant
-  webserver.vm.provision "shell", path: "build-webserver-vm.sh"
+  webserver.vm.provision "shell", path: "vm-webserver/build-webserver-vm.sh"
 end
 
   # this section will define the VM that runs the scaper and upadates the database.
@@ -65,7 +65,7 @@ end
       vb.memory = '2048'
     end
 
-    scraper.vm.provision "shell", path: "build-scraper-vm.sh"
+    scraper.vm.provision "shell", path: "vm-scraper/build-scraper-vm.sh"
 
   end
 end

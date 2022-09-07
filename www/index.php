@@ -41,6 +41,21 @@ th, td {
   </a>
 </p>
 
+<p>
+  Use this link to see a mongodb of the data: 
+  <a href="mongodb-database.php">
+    data visualisation
+  </a>
+</p>
+
+
+<p>
+  Use this link to see curr development: 
+  <a href="other.html">
+    other
+  </a>
+</p>
+
 </body>
 </html>
 

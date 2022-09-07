@@ -17,10 +17,10 @@
     </head>
 
     <body>
-
-        <h1>Database test page</h1>
-
-        
-
+    <?php 
+        $command = escapeshellcmd('/home/vagrant/visualise/plot_graph.py');
+        $output = shell_exec($command);
+        echo $output;
+        ?>
     </body>
 </html>

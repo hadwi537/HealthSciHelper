@@ -7,6 +7,12 @@ apt-get install -y apache2 php libapache2-mod-php php-mysql
 # See test-website.conf for details
 cp /vagrant/test-website.conf /etc/apache2/sites-available/
 
+# folder to build visualisation from
+cp -r /vagrant/visualise /home/vagrant/
+
+chmod +x /home/vagrant/visualise/plot_graph.py
+
+
 #Install custom web config 
 a2ensite test-website
 # Disable default website
@@ -15,9 +21,26 @@ a2dissite 000-default
 systemctl reload apache2
 service apache2 reload
 
-# get npm to install echarts
-# might not need 
-# apt-get install npm -y
+npm install mongodb
 
-# get echarts
-# npm install echarts --save
+# Need this to get 3.10
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt update
+
+# install python and pip with yes to all prompts
+apt-get install -y python3
+apt-get install -y python3-pip
+apt-get install -y python3.8-venv
+apt-get install -y pipenv
+sudo apt install -y python3.10
+
+# for dsplot
+# get the library
+apt-get install -y graphviz libgraphviz-dev 
+
+# install package
+pipenv install dsplot
+
+pipenv install pymongo
+

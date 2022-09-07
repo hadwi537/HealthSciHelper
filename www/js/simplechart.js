@@ -1,27 +1,31 @@
-      // Initialize the echarts instance based on the prepared dom
-      var myChart = echarts.init(document.getElementById('main'));
+  // Initialize the echarts instance based on the prepared dom
+  var myChart = echarts.init(document.getElementById('main'));
 
-      // Specify the configuration items and data for the chart
-      var option = {
-        title: {
-          text: 'ECharts Getting Started '
-        },
-        tooltip: {},
-        legend: {
-          data: ['sales']
-        },
-        xAxis: {
-          data: ['Shirts', 'Cardigans', 'Chiffons', 'Pants', 'Heels', 'Socks']
-        },
-        yAxis: {},
-        series: [
-          {
-            name: 'sales',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-          }
-        ]
-      };
+  // Specify the configuration items and data for the chart
+  var option = {
+  xAxis: {
+    type: 'category',
+    data: ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie']
+  },
+  yAxis: {},
+  series: [
+    {
+      type: 'bar',
+      name: '2015',
+      data: [89.3, 92.1, 94.4, 85.4]
+    },
+    {
+      type: 'bar',
+      name: '2016',
+      data: [95.8, 89.4, 91.2, 76.9]
+    },
+    {
+      type: 'bar',
+      name: '2017',
+      data: [97.7, 83.1, 92.5, 78.1]
+    }
+  ]
+};
 
-      // Display the chart using the configuration items and data just specified.
-      myChart.setOption(option);
+  // Display the chart using the configuration items and data just specified.
+  myChart.setOption(option);

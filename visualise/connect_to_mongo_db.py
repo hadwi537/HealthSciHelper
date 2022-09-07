@@ -1,7 +1,8 @@
 from pymongo import MongoClient
 
 
-uri = "mongodb://vagrant:vagrant@localhost:27017/admin"
+MONGO_URI="mongodb://vagrant:vagrant@127.0.0.1:27017/admin?keepAlive=true&poolSize=30&autoReconnect=true&socketTimeoutMS=360000&connectTimeoutMS=360000"
+
 
 
 def bfs(paper_code, coll):
@@ -44,7 +45,7 @@ def bfs(paper_code, coll):
 
 def get_prereq_list(paper_code):
     # Replace the uri string with your MongoDB deployment's connection string.
-    client = MongoClient(uri)
+    client = MongoClient(MONGO_URI)
     
     # database and collection code goes here
     db = client.admin

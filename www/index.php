@@ -48,6 +48,13 @@ th, td {
   </a>
 </p>
 
+<p>
+  Use this link to see a placeholder image: 
+  <a href="pic.html">
+    placeholder image
+  </a>
+</p>
+
 
 <p>
   Use this link to see curr development: 

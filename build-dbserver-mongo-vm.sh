@@ -47,6 +47,11 @@ security:
     authorization: "enabled"
 EOB
 
+
+## Listen on any interface so webserver can connect
+# use sed to search and replace bindIp variable
+sed -i "s,\\(^[[:blank:]]*bindIp:\\) .*,\\1 0.0.0.0," /etc/mongod.conf
+
 echo "-------------------------- RESTARTED MONGOD --------------------------"
 sudo systemctl restart mongod
 

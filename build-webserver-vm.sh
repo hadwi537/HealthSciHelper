@@ -39,6 +39,8 @@ sudo apt install -y python3.10
 # get the library
 apt-get install -y graphviz libgraphviz-dev 
 
+cd visualise
+
 # install package
 pipenv install dsplot
 

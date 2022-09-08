@@ -30,8 +30,8 @@ config.vm.define "dbserver" do |dbserver|
     webserver.vm.hostname = "webserver"
 
     # allows host computer to connect to IP address 127.0.0.1 port 8080, and that network
-    # request will reach the webserver VM's port 80
-    webserver.vm.network "forwarded_port", guest: 3000, host: 3001, auto_correct: true
+    # request will reach the webserver VM's port 3001
+    webserver.vm.network "forwarded_port", guest: 3001, host: 8080, host_ip: "127.0.0.1"
 
     # Setup a private network to allow VMs to communicate with each other
     # a form such as 192.168.2.x for x 
@@ -40,6 +40,11 @@ config.vm.define "dbserver" do |dbserver|
     # Required for some environments
     webserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
 
+    # configure virtualbox provider
+    webserver.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.memory = '2048'
+    end
 
   # Shell commands that specifiy the provisioning of the webserver VM.
   # Note the file test-website.conf is copied from this host to the VM

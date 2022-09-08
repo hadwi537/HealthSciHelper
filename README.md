@@ -57,6 +57,7 @@ windows defender and that there are no vms in the vm folder other than the ones 
 The webserver can be run locally by `cd vm-webapp` and then `npm start`. This will open an instance that can be viewed at 
 http://127.0.0.1:3001
 Note that a useful feature of this design means that everytime a change is made to the webapp, the results are instantly updated in the browser making development relatviely sraightforward.
+If you want to connect to a instance running on the webserver vm use http://127.0.0.1:8080/
 
 ### The Database
 
@@ -109,7 +110,7 @@ At any time, the webserver can be deployed to "https://hadwi537.github.io/Health
 * Express: Server and routing API for the web app
 * React: Front end Javascript library 
 * Bootstrap: Frontend framework for webapp
-* Ubuntu Xenial: VM images 
+* Ubuntu Focal: VM image
 
 ## Author
 William Hadden - *All work*

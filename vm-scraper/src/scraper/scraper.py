@@ -5,8 +5,6 @@ from bs4 import BeautifulSoup
 from connect_to_mongo_db import connect_to_mongo_db
 import re
 
-
-
 subject_to_html = dict()
 
 class OtagoHTMLParser(HTMLParser):

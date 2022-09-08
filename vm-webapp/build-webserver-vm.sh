@@ -8,9 +8,6 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 # for developing node.js
 sudo apt-get install -y nodejs
 
-# this install NodeSource Node.js repo onto a debian or ubunutu system
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-
 # refresh changes
 apt-get update
 

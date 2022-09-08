@@ -2,8 +2,20 @@
 
 # HealthSciHelper
  
-This project aims to promote other oppurtunities for Health Science first year 
-Students at Otago University. 
+This project aims to inform on the paper options at the university of otago
+to allow better informed desicion making with respect to study.
+
+This application is composed of three Vagrant virtual machines provisioned with 
+virtualbox. the vm-webapp VM hosts a paper information webapp written using React.
+This virtual machine interacts with a database server in order to retrieve and 
+consequently, diplay, said paper information. 
+
+The database virtal machine hosts a node.js server that is connected to a 
+mongoDB database. An express.js API is connected to this server to define access.
+
+The final virtual machine hosts a webscraper implimented in python 
+to get data from the university of otago webpage, process it and update
+the database with this information monthly.
 
  ### Build instuctions 
  To access the remote server, use the remote explorer config.
@@ -83,7 +95,7 @@ Then copy and paste the ouput into an ssh config file.
 # Current Website configuration 
 
 (localhost)
-http://127.0.0.1:8080
+http://127.0.0.1:3001
 
 ### Next Steps:
 

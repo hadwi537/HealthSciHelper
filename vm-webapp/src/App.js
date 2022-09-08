@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import PaperList from './components/PaperList'
 
+
 class App extends Component {
 
   //state object contains properties for everything to store as state
@@ -11,12 +12,6 @@ class App extends Component {
     data: [],
     session_id: uuid(),
   };
-
-  async componentWillMount() {
-    const response = await axios.get(`http://localhost:3000/papers`);
-    const json = await response.data;
-    this.setState({ data: json });
-  }
 
   render() {
     return (

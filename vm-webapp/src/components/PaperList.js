@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
 
+
 export default class NoteList extends React.Component {
   state = {
     reply: []
   };
 
   componentDidMount() {
-    axios.get(`http://192.168.55.11:3000/papers`).then(res => {
+    axios.get(`http://192.168.2.14:5000/papers`).then(res => {
       const reply = res.data;
       console.log(reply);
       this.setState({ reply });

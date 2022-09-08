@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 5000;
 const MongoClient = require("mongodb").MongoClient;
 const mongo = require("mongodb");
 const bodyParser = require("body-parser");
 
 let db;
 
+
+// TODO, need to change port to listen on 5000
 const MONGO_URI = "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"
 
 MongoClient.connect(MONGO_URI, function(err, client) {

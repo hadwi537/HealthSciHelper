@@ -1,7 +1,7 @@
 #!/bin/sh
 
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt-get install -y nodejs
 apt-get update
 
@@ -22,7 +22,7 @@ echo "-------------------------- INSTALL PACKAGES --------------------------"
 apt-get install -y mongodb-org=4.4.8 mongodb-org-server=4.4.8 mongodb-org-shell=4.4.8 mongodb-org-mongos=4.4.8 mongodb-org-tools=4.4.8
 apt-get install -y mongodb-mongosh
 
-# Start and Enable Mongod - not work  - CPU not support this version
+# Start and Enable Mongod
 echo "-------------------------- START & ENABLE MONGOD --------------------------"
 sudo systemctl enable --now mongod
 
@@ -65,13 +65,16 @@ echo "-------------------------- RESTARTED MONGOD --------------------------"
 sudo systemctl restart mongod
 
 cd vm-db
+
 npm install
 
-npm i -g forever
+# npm i -g forever
 
-service mongod start &
+# service mongod start &
+# npm install forever -g
 
-forever start server.js &
+npm start server.js &
 
+apt install net-tools
 
 

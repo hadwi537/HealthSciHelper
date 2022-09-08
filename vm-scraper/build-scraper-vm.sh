@@ -8,7 +8,7 @@ apt-get update && sudo apt upgrade -y
 cp -r /vagrant/vm-scraper/src/scraper /home/vagrant/
 
 # move to project folder
-cd src/scraper
+cd scraper
 
 # Cron for scheduling 
 # Adds a crontab for running scrapers every minute (currently)
@@ -50,6 +50,8 @@ sudo apt update
 apt-get install -y pipenv
 sudo apt install -y python3.10
 
+# install dependentcies
+pipenv install 
 
 Assign more swap space so conda can install packages
 sudo fallocate -l 1G /swapfile 

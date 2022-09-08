@@ -33,7 +33,6 @@ export default class NoteList extends React.Component {
           {this.state.reply.map(paper => (
             <li key={paper.paper_code}>
               {paper.paper_code}{""}
-              
             </li>
           ))}
         </ul>

@@ -1,38 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import { v4 as uuid } from 'uuid';
+import axios from 'axios';
 import React, { Component } from 'react'
-import Table from './table'
-import Form from './Form'
+import PaperList from './components/'
 
 class App extends Component {
 
   //state object contains properties for everything to store as state
   state = {
-    characters: [],
-  }
-  render() {
-    const { characters } = this.state
+    data: [],
+    session_id: uuid(),
+  };
 
+  async componentWillMount() {
+    const response = await axios.get(`http://localhost:3000/papers`);
+    const json = await response.data;
+    this.setState({ data: json });
+  }
+
+  render() {
     return (
-      <div className="container">
-        <Table characterData={characters} removeCharacter={this.removeCharacter} />
-        <Form handleSubmit={this.handleSubmit} />
+      <div className="App">
+        <div className="container">
+          <div className="row">
+            <div className="col" />
+            <div className="col-lg-7">
+              <PaperList />
+            </div>
+            <div className="col" />
+          </div>
+        </div>
       </div>
-    )
-  }
-  removeCharacter = (index) => {
-    const { characters } = this.state
+    );
   
-    this.setState({
-      characters: characters.filter((character, i) => {
-        return i !== index
-      }),
-    })
+    }
   }
-  handleSubmit = (character) => {
-    this.setState({ characters: [...this.state.characters, character] })
-  }
-}
 
 
 export default App;

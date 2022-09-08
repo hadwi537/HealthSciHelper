@@ -130,3 +130,6 @@ $ npm run deploy
 
 # home page once published:
 "https://hadwi537.github.io/HealthSciHelper/"
+
+
+* for database use npm start

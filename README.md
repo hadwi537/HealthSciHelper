@@ -115,3 +115,11 @@ be quiered by webserver
 * now use npm
 
 * bootstrapped using Create React App
+
+
+## web ap commands
+
+from the root directoruy of the web-app vm
+
+npm start 
+runs on some host

@@ -14,6 +14,8 @@ apt-get update
 # copy over folder
 cp -r /vagrant/vm-webserver /home/vagrant/
 
+cd /home/vagrant/vm-webapp
+
 # install all current dependices
 npm install
 

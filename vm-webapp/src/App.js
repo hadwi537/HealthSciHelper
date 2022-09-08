@@ -18,13 +18,7 @@ class App extends Component {
 
 
   render() {
-    const styles = {
-      chart: {
-        width: '600px',
-        height: '400',
-      }
 
-    }
     return (
       <div className="App">
 

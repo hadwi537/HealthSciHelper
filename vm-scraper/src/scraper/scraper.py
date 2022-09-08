@@ -105,7 +105,7 @@ for subject in subject_to_html.keys(): #tABLES ARE options for degree + all pape
         print(e)
     
     # for testing purposes
-    if (len(paper_list) > 10):
+    if (len(paper_list) > 40):
         break
 
 

@@ -20,12 +20,16 @@ const Page = (props) => {
         paper.paper_code
     )
 
+    pre_req_count.max = function() {
+      return Math.max.apply(null, this);
+    }
+
   const options = {
     polar: {
         radius: [7, '80%']
     },
     radiusAxis: {
-        max: 4
+        max: pre_req_count.max()
     },
     angleAxis: {
         type: 'category',

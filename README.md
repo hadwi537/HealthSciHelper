@@ -17,7 +17,29 @@ The final virtual machine hosts a webscraper implimented in python
 to get data from the university of otago webpage, process it and update
 the database with this information monthly.
 
- ### Build instuctions 
+## Getting started
+
+### Prerequites 
+
+* Download and install Vagrant from https://www.vagrantup.com/downloads
+* Download and install VirtualBox from https://www.virtualbox.org/wiki/Downloads
+
+please follow the instructions provided on the respective pages to progress
+
+ ### Setup & Build
+
+After the prerequites have been installed, open your IDE of choice (I used Visual Studio Code https://code.visualstudio.com/download) and create the folder you wish to associate with this project.
+Then, clone the project from the url: https://github.com/hadwi537/HealthSciHelper. If your using visual studio code I recommend using the git plugin otherwise, you can use GitHub desktop or the command line 'git clone url' 
+
+Once cloned, running `vagrant up` in the terminal will run the project
+
+The webapp can then be viewed on local http://localhost:3001
+
+
+
+
+
+
  To access the remote server, use the remote explorer config.
  Create new ones in the C drive (.ssh) folder 
  Use vagrant ssh-config to get details of new vms

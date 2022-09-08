@@ -35,17 +35,12 @@ The webapp can then be viewed on local http://localhost:3001
 
 ### file sizes and timing details
 
-* size of downloads dependinces during provisioning
+* ~2 GB in total for every virtual machine from a clean download.
 
-* box file 
+*  Current Project size is ~ 700 MB
 
-* zipped
-
-* clean v new
-
-* vagrant up execture time from clean
-
-* vagrant up execute from existing 
+*  Subsequent setups install the same amount of data except for the database server which may 
+use more disk space if more entries are added to the database.
 
 ## Development
 
@@ -93,7 +88,7 @@ At any time, the webserver can be deployed to "https://hadwi537.github.io/Health
 
 * Generate Private Keys and redifine/improve security
 
-* add echarts to the webapp, i.e a radial tree of paper dependentcies
+* Add a radial tree of paper dependentcies
 (see visualisation code for inspiration)
 
 * replace direct access of scraper with express api
@@ -111,6 +106,7 @@ At any time, the webserver can be deployed to "https://hadwi537.github.io/Health
 * React: Front end Javascript library 
 * Bootstrap: Frontend framework for webapp
 * Ubuntu Focal: VM image
+* Apache ECharts
 
 ## Author
 William Hadden - *All work*

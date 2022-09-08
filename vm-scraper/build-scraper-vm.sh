@@ -8,7 +8,7 @@ apt-get update && sudo apt upgrade
 
 cp -r /vagrant/vm-scraper/src/scraper /home/vagrant/
 
-cd scraper
+cd src/scraper
 
 # create virtal environment
 pipenv install -r requirements.txt

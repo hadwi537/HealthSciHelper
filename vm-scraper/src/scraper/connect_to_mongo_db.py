@@ -1,9 +1,9 @@
 from pymongo import MongoClient
 
 
-uri = "mongodb://vagrant:vagrant@localhost:27017/admin"
 uri = "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"
 
+# TODO convert to js
 def connect_to_mongo_db(data):
     # Replace the uri string with your MongoDB deployment's connection string.
     client = MongoClient(uri)

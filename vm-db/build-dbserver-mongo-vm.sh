@@ -70,23 +70,8 @@ npm install
 npm i -g forever
 
 service mongod start &
-# npm install forever -g
-forever start databaseApp.js &
 
-# # Need this to get 3.10
-# sudo apt install software-properties-common -y
-# sudo add-apt-repository ppa:deadsnakes/ppa -y
-# sudo apt update
+forever start server.js &
 
-# # install python and pip with yes to all prompts
-# apt-get install -y python3
-# apt-get install -y python3-pip
-# apt-get install -y python3.8-venv
-# apt-get install -y pipenv
-# sudo apt install -y python3.10
 
-# pipenv install pymongo
-
-# # insert default values
-# pipenv run python /vagrant/vm-db/setup-mongodb.py
 

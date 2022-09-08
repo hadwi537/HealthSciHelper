@@ -1,29 +1,62 @@
 import React from 'react';
 import ReactECharts from 'echarts-for-react';
+import axios from "axios";
 
-const Page = () => {
+
+const Page = (props) => {
+    // get the length of the data
+    const pre_req_count = props.papers?.map((paper) => 
+        paper.prereq_list.length
+    )
+    //create array of paper titles
+    const paper_codes = props.papers?.map((paper) => 
+        paper.paper_code
+    )
+
   const options = {
-    grid: { top: 8, right: 8, bottom: 24, left: 36 },
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    polar: {
+        radius: [7, '80%']
     },
-    yAxis: {
-      type: 'value',
+    radiusAxis: {
+        max: 4
+    },
+    angleAxis: {
+        type: 'category',
+        data: paper_codes,
+        startangle: 75
     },
     series: [
       {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line',
-        smooth: true,
+        type: 'bar',
+        data: pre_req_count,
+        coordinateSystem: 'polar',
+        label: {
+            show: 'true',
+            position: 'middle',
+            formatter: '{b}: {c}'
+        }
       },
     ],
-    tooltip: {
-      trigger: 'axis',
-    },
+    tooltip: {},
   };
 
   return <ReactECharts option={options} />;
 };
 
-export default Page;
+export default class Chart extends React.Component {
+    state = {
+      reply: []
+    }
+    componentDidMount() {
+      axios.get(`http://192.168.2.14:5000/papers`).then(res => {
+        const reply = res.data;
+        console.log(reply);
+        this.setState({ reply });
+      });
+    }
+    render() {
+      return (
+        <Page papers={this.state.reply}/>
+      )
+  }
+}

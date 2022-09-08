@@ -32,7 +32,6 @@ const TableBody = (props) => {
   return <tbody>{rows}</tbody>
 }
 
-// simple component
 export default class Table extends React.Component {
     state = {
       reply: []

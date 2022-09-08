@@ -21,21 +21,17 @@ class App extends Component {
         <div className="container">
           <div className="row">
 
-            <div style = {{display: 'inline', float: 'left', textAlign: 'center'}}>
-              {/* <PaperList /> */}
-            </div>
-
           </div>
         </div>
 
-        <div className='container'>
+        <div className='container' style = {{position: 'right'}}>
           <h1> Health Sci Helper! </h1>
           <p> visualising paper information </p>
           <Table />
         </div>
 
-        <div className='container'>
-          <h3> Test chart</h3>
+        <div className='container' style={{width: '1200', height: '1200'}} >
+          <h3> Number of pre-requistes by paper name</h3>
           <Chart />
         </div>
 

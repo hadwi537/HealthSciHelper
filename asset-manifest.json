@@ -1,16 +1,15 @@
 {
   "files": {
     "main.css": "/HealthSciHelper/static/css/main.073c9b0a.css",
-    "main.js": "/HealthSciHelper/static/js/main.889fa777.js",
+    "main.js": "/HealthSciHelper/static/js/main.ead44d08.js",
     "static/js/787.d34ef591.chunk.js": "/HealthSciHelper/static/js/787.d34ef591.chunk.js",
-    "static/media/logo.svg": "/HealthSciHelper/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/HealthSciHelper/index.html",
     "main.073c9b0a.css.map": "/HealthSciHelper/static/css/main.073c9b0a.css.map",
-    "main.889fa777.js.map": "/HealthSciHelper/static/js/main.889fa777.js.map",
+    "main.ead44d08.js.map": "/HealthSciHelper/static/js/main.ead44d08.js.map",
     "787.d34ef591.chunk.js.map": "/HealthSciHelper/static/js/787.d34ef591.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.889fa777.js"
+    "static/js/main.ead44d08.js"
   ]
 }

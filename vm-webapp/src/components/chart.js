@@ -16,7 +16,7 @@ const Page = (props) => {
         paper.prereq_list.length
     )
     //create array of paper titles
-    const paper_codes = props.papers?.map((paper) => 
+    const paper_codes = all_pre_req_non_zero?.map((paper) => 
         paper.paper_code
     )
 

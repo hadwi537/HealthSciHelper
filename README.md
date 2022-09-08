@@ -1,12 +1,10 @@
-[![](https://data.jsdelivr.com/v1/package/npm/echarts/badge)](https://www.jsdelivr.com/package/npm/echarts)
-
 # HealthSciHelper
  
 This project aims to inform on the paper options at the university of otago
 to allow better informed desicion making with respect to study.
 
 This application is composed of three Vagrant virtual machines provisioned with 
-virtualbox. the vm-webapp VM hosts a paper information webapp written using React.
+virtualbox and follows a MERN stack archicture. the vm-webapp VM hosts a paper information webapp written using React.
 This virtual machine interacts with a database server in order to retrieve and 
 consequently, diplay, said paper information. 
 
@@ -35,139 +33,83 @@ Once cloned, running `vagrant up` in the terminal will run the project
 
 The webapp can then be viewed on local http://localhost:3001
 
+### file sizes and timing details
 
+* size of downloads dependinces during provisioning
 
+* box file 
 
+* zipped
 
+* clean v new
 
- To access the remote server, use the remote explorer config.
- Create new ones in the C drive (.ssh) folder 
- Use vagrant ssh-config to get details of new vms
+* vagrant up execture time from clean
 
- Opens in /home/vagrant which is different to /vagrant
+* vagrant up execute from existing 
 
-Then in new Window open from wherever suits
+## Development
 
-### Usage
-run 'vagrant up' in the terminal to create the application
+* Ensure that the firewalls are turned off on host to ensure the application runs. For example,
+windows defender and that there are no vms in the vm folder other than the ones currently running/building as these may cause port collisions.
 
-# Interacting with the database
-vagrant ssh dbserver
-run 
-$ systemctl status mongod
+### The webserver
 
-to ensure mongodb is running
+The webserver can be run locally by `cd vm-webapp` and then `npm start`. This will open an instance that can be viewed at 
+http://127.0.0.1:3001
+Note that a useful feature of this design means that everytime a change is made to the webapp, the results are instantly updated in the browser making development relatviely sraightforward.
 
-then use mongosh to enter and check mongodb. 
-To see papers in collection use commands:
-test> use admin
-admin> db.auth('vagrant', 'vagrant')
-admin> show collections
-admin> db.papers.find()
+### The Database
 
-to display all collections names and contents of the papers collection
+The database can also be started locally by `cd vm-db` followed by `npm start server.js`. The database can be accessed from the command line use mongosh "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"
 
-you can use 'db.enableFreeMonitoring()' at this point to monitor the 
-database via a GUI
+in this mode you can use you can type 'db.enableFreeMonitoring()' which will allow you to monitor the database via a GUI webpage if you so desire.
 
+A helpful command is `systemctl status mongod` which will indicate wether or not the database is running.
 
-# Architecture
+### The scraper
 
-HealthSciHelper is based off a LAMP stack web architecture with a few differences.
-First, the front end and back end are hosted on Linux virtual machines that are provisined using vagrant with virtualbox.
-A public facing webserver front end controls and hosts (via apache) the display and user interaction. 
-This webserver follows a typical client-server relation.
+The scraper is fully written in python. Use pipenv run python <script.py> in order to run and develop scripts whose dependices will be resolved and added automatically by pipenv.
 
-This webserver then accesses via a private network, a backend, database server.
-This noSQL, mongodb database contains univeristy paper information, updated every time step by the 'scraper' virtual machine.
+### Diagram of architecture 
+![alt text](https://github.com/hadwi537/HealthSciHelper/blob/main/docs-assets/architecture.PNG?raw=true)
 
-The scraper virtual machine controls the running of the webscapers to automatically scrape data from the selected
-universities site in an automated fashion using cron timers. This virtual machine then updates the database backend 
-with the newly scraped paper information. 
-
-## Diagram of architecture 
-![alt text](https://github.com/hadwi537/HealthSciHelper/blob/main/docs-assets/Diagram.PNG?raw=true)
-
-# Data Structure
+### Data Structure
 
 Simple data structure - just one table of papers 
 
-```mermaid
-    erDiagram
-    Store {
-        string paper_code
-        string year
-        string title
-        string points
-        list: string teaching_period
-        string subject
-        list: string prerequistes
-        dict more_info
-    }
-```
-# Useful debugging 
+![alt text](https://github.com/hadwi537/HealthSciHelper/blob/main/docs-assets/paper_erd.PNG?raw=true)
 
-recommend using vsode with the remote ssh extension. 
-Simply change to the directory with the Vagrantfile
-and get the ssh-config using 
-~/vagrant/machine$ vagrant ssh-config
-Then copy and paste the ouput into an ssh config file.
-(default at ~/.ssh/config)
+However, the fact that the paper objects form a network of nodes is why a NoSQL database (mongodb) was used.
 
-# Current Website configuration 
+### Deployment
 
-(localhost)
-http://127.0.0.1:3001
+At any time, the webserver can be deployed to "https://hadwi537.github.io/HealthSciHelper/". To do this, change directory to vm-webapp and run:
+
+`npm run build` followed by
+`npm run deploy`
 
 ### Next Steps:
 
 * Generate Private Keys and redifine/improve security
 
-* Call pipenv creation in base directory (possibility)
+* add echarts to the webapp, i.e a radial tree of paper dependentcies
+(see visualisation code for inspiration)
 
-* Initalise the Pipfiles in the root or not?
-* Seems cleaner to do it on remote but is slowww
-* Could add more memory/cpu to the machine?
+* replace direct access of scraper with express api
 
-* Note Log in as vagrant user
+* Some papers require some number of 'generic' points, i.e non-specific points, how can this be effectively captured?
 
-* Some papers require some number of 'generic' points, i.e non-specific points
+* add CI/CD pipelines
 
-* for visualisation, for a certain paper, get all its children etc
-* then show as radial tree (can do with mongodb request)
+## Utilised Technologies
 
-* todo: plan is to create dsplot.graph in scraper instead
-i.e it will generate the data, insert it, then create the graph then pass graph to db where it can 
-be quiered by webserver
+(MERN Stack)
+* MongoDB: the database
+* Node: Backend Javascript runtime 
+* Express: Server and routing API for the web app
+* React: Front end Javascript library 
+* Bootstrap: Frontend framework for webapp
+* Ubuntu Xenial: VM images 
 
-* ensure that the windows defender etc is turned off and there are no vms in the vm folder as these will cause collisions
-
-* to connect to the database using mongosh from command line use mongosh "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"
-
-* using express api (most common)
-
-* now use npm
-
-* bootstrapped using Create React App
-
-
-## web ap commands
-
-from the root directoruy of the web-app vm
-
-npm start 
-runs on some host
-
-for build and deploy run:
-$ npm run build
-$ npm run deploy
-
-# home page once published:
-"https://hadwi537.github.io/HealthSciHelper/"
-
-## local development
-
-* for database use npm start
-
-
-using cross-env package to avoid port collisions
+## Author
+William Hadden - *All work*

@@ -67,8 +67,10 @@ sudo systemctl restart mongod
 cd vm-db
 npm install
 
+npm i -g forever
+
 service mongod start &
-npm install forever -g
+# npm install forever -g
 forever start databaseApp.js &
 
 # # Need this to get 3.10

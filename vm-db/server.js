@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 let db;
 
 
-// TODO, need to change port to listen on 5000
+
 const MONGO_URI = "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"
 
 MongoClient.connect(MONGO_URI, function(err, client) {

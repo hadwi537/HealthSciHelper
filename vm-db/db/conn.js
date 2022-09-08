@@ -1,11 +1,9 @@
-const { MongoClient } = require("mongodb");
-
-const connectionString = process.env.ATLAS_URI;
-
+const { MongoClient } = require('mongodb');
+const connectionString = process.env.MONGO_URI;
 const client = new MongoClient(connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 let dbConnection;
 
@@ -16,8 +14,8 @@ module.exports = {
         return callback(err);
       }
 
-      dbConnection = db.db("admin");
-      console.log("Successfully connected to MongoDB.");
+      dbConnection = db.db('admin');
+      console.log('Successfully connected to MongoDB.');
 
       return callback();
     });

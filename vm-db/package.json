@@ -1,17 +1,18 @@
 {
-  "name": "vm-dbapp",
+  "name": "vm-db",
   "version": "1.0.0",
-  "description": "databsae",
-  "main": "databaseApp.js",
+  "description": "vm database",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "William Hadden",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "mongodb": "^4.9.1",
-    "text-encoder": "^0.0.4"
+    "mongodb": "^4.9.1"
   }
 }

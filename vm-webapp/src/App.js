@@ -24,14 +24,14 @@ class App extends Component {
           </div>
         </div>
 
-        <div className='container' style = {{position: 'right'}}>
+        <div className='container'>
           <h1> Health Sci Helper! </h1>
           <p> Visualising paper information </p>
           <Table />
         </div>
 
         <div className='container' style={{width: '1200', height: '1200'}} >
-          <h3> Number of Prerequistes by paper name</h3>
+          <h3> Number of Prerequistes by paper code</h3>
           <Chart />
         </div>
 

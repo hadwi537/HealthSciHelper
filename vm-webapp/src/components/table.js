@@ -7,7 +7,8 @@ const TableHeader = () => {
     return (
       <thead>
         <tr>
-          <th>Paper Code</th>
+          <th> Paper Code</th>
+          <th>Paper Title</th>
           <th> Year </th>
           <th> Prerequistes </th>
         </tr>
@@ -20,6 +21,7 @@ const TableBody = (props) => {
   const rows = props.characterData.map((paper) => {
     return (
         <tr key={paper.paper_code}>
+        <td> {paper.paper_code}</td> 
         <td>{paper.title}</td>
         <td>{paper.year}</td>
         <td>{paper.prereq_list.map(paper_code => (
@@ -45,7 +47,7 @@ export default class Table extends React.Component {
     }
     render() {
       return (
-        <table>
+        <table style={{border: '1px solid black', margin_left: 'auto', margin_right: 'auto' }}>
           <TableHeader />
           <TableBody characterData={this.state.reply} />
         </table>

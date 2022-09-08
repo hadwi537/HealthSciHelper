@@ -110,6 +110,8 @@ be quiered by webserver
 
 * to connect to the database using mongosh from command line use mongosh "mongodb://vagrant:vagrant@192.168.2.14:3000/admin"
 
-* moving to use express
+* using express api (most common)
 
 * now use npm
+
+* bootstrapped using Create React App

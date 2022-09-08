@@ -17,7 +17,8 @@ cp -r /vagrant/vm-webserver /home/vagrant/
 # install all current dependices
 npm install
 
-npm install mongodb
+# to start and forever run the webapp
+nohup npm start &
 
 
 

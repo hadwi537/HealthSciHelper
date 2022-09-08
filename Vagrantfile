@@ -44,7 +44,7 @@ config.vm.define "dbserver" do |dbserver|
   # Shell commands that specifiy the provisioning of the webserver VM.
   # Note the file test-website.conf is copied from this host to the VM
   # through the shared folder mounted in the VM at /vagrant
-  webserver.vm.provision "shell", path: "vm-webserver/build-webserver-vm.sh"
+  webserver.vm.provision "shell", path: "vm-webapp/build-webserver-vm.sh"
 end
 
   # this section will define the VM that runs the scaper and upadates the database.

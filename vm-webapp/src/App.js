@@ -18,21 +18,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <div className="row">
 
-          </div>
+        <div className='container' style={{width: '1200', height: '1200'}} >
+        <h1> Health Sci Helper! </h1>
+          <p> Visualising paper information </p>
+          <h3> Number of Prerequistes by paper code</h3>
+          <Chart />
         </div>
 
         <div className='container'>
-          <h1> Health Sci Helper! </h1>
-          <p> Visualising paper information </p>
+          
           <Table />
-        </div>
-
-        <div className='container' style={{width: '1200', height: '1200'}} >
-          <h3> Number of Prerequistes by paper code</h3>
-          <Chart />
         </div>
 
 

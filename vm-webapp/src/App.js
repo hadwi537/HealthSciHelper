@@ -26,7 +26,7 @@ class App extends Component {
 
         <div className='container' style = {{position: 'right'}}>
           <h1> Health Sci Helper! </h1>
-          <p> visualising paper information </p>
+          <p> Visualising paper information </p>
           <Table />
         </div>
 

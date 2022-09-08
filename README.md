@@ -123,3 +123,10 @@ from the root directoruy of the web-app vm
 
 npm start 
 runs on some host
+
+for build and deploy run:
+$ npm run build
+$ npm run deploy
+
+# home page once published:
+"https://hadwi537.github.io/HealthSciHelper/"

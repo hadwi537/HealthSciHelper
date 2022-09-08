@@ -15,11 +15,20 @@ class App extends Component {
     session_id: uuid(),
   };
 
+
+
   render() {
+    const styles = {
+      chart: {
+        width: '600px',
+        height: '400',
+      }
+
+    }
     return (
       <div className="App">
 
-        <div className='container' style={{width: '1200', height: '1200'}} >
+        <div className='container' >
         <h1> Health Sci Helper! </h1>
           <p> Visualising paper information </p>
           <h3> Number of Prerequistes by paper code</h3>
@@ -30,13 +39,12 @@ class App extends Component {
           
           <Table />
         </div>
-
-
       </div>
     );
-  
     }
   }
+
+
 
 
 export default App;

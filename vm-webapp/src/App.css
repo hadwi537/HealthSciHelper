@@ -37,3 +37,8 @@
   }
 }
 
+.container {
+  width: 50; 
+  /* To adjust the height as well */ 
+  height: 20;
+}

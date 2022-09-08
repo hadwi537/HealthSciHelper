@@ -4,8 +4,15 @@ import axios from "axios";
 
 
 const Page = (props) => {
+
+    const all_pre_req_non_zero = props.papers?.filter((paper) => {
+      if (paper.prereq_list.length > 0) {
+        return paper
+      }
+
+    })
     // get the length of the data
-    const pre_req_count = props.papers?.map((paper) => 
+    const pre_req_count = all_pre_req_non_zero?.map((paper) => 
         paper.prereq_list.length
     )
     //create array of paper titles
@@ -40,7 +47,7 @@ const Page = (props) => {
     tooltip: {},
   };
 
-  return <ReactECharts option={options} />;
+  return <ReactECharts option={options} style={{height:'1200px'}} />;
 };
 
 export default class Chart extends React.Component {

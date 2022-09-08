@@ -1,9 +1,12 @@
 #!/bin/sh
 
-apt-get update
-sudo apt-get install -y nodejs
 
-cp /vagrant/vm-db /home/
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+apt-get update
+
+cp -r /vagrant/vm-db /home/vagrant/
+
 
 # Adding Repo
 echo "-------------------------- ADDING REPO -------------------------------------"
@@ -53,12 +56,7 @@ EOB
 
 
 ## Listen on any interface so webserver can connect
-# use sed to search and replace bindIp variable
-# connect to localhost
-# sed -i "s,\\(^[[:blank:]]*bindIp:\\) .*,\\1 0.0.0.0," /etc/mongod.conf
-
-# sed -i "s,\\(^[[:blank:]]*bindIp:\\) .*,\\1 127.0.0.1,192.168.2.11,192.168.2.15," /etc/mongod.conf
-# sed -i 's/^\( *bindIp *: *\).*/\1 0.0.0.0/'
+# use cutom config to setup ports 
 
 cp /vagrant/vm-db/mongod.conf /etc/
 

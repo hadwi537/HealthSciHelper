@@ -8,7 +8,7 @@ const TableHeader = () => {
       <thead>
         <tr>
           <th>Paper Code</th>
-          <th>year</th>
+          <th> year </th>
           <th> Prerequistes </th>
         </tr>
       </thead>

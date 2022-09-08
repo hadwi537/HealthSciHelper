@@ -31,7 +31,7 @@ class App extends Component {
         </div>
 
         <div className='container' style={{width: '1200', height: '1200'}} >
-          <h3> Number of pre-requistes by paper name</h3>
+          <h3> Number of Prerequistes by paper name</h3>
           <Chart />
         </div>
 

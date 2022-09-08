@@ -16,6 +16,7 @@ cd /home/vagrant/vm-webapp
 
 # install all current dependices
 npm install
+npm install echarts --save
 
 # to start and forever run the webapp
 nohup npm start &

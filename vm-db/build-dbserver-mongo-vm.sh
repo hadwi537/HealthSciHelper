@@ -68,11 +68,6 @@ cd vm-db
 
 npm install
 
-# npm i -g forever
-
-# service mongod start &
-# npm install forever -g
-
 npm start server.js &
 
 apt install net-tools

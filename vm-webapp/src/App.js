@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import PaperList from './components/PaperList'
 import Table from './components/table';
+import Chart from './components/chart'
 
 
 class App extends Component {
@@ -20,8 +21,8 @@ class App extends Component {
         <div className="container">
           <div className="row">
 
-            <div style = {{display: 'inline', float: 'left'}}>
-              <PaperList />
+            <div style = {{display: 'inline', float: 'left', textAlign: 'center'}}>
+              {/* <PaperList /> */}
             </div>
 
           </div>
@@ -32,6 +33,12 @@ class App extends Component {
           <p> visualising paper information </p>
           <Table />
         </div>
+
+        <div className='container'>
+          <h3> Test chart</h3>
+          <Chart />
+        </div>
+
 
       </div>
     );

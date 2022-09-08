@@ -1,14 +1,12 @@
 #!/bin/bash
 
-apt-get update
-
 # get release
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
 # for developing node.js
 sudo apt-get install -y nodejs
 
-# refresh changes
+# refresh
 apt-get update
 
 # copy over folder

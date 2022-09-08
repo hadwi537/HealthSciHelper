@@ -10,9 +10,6 @@ cp -r /vagrant/vm-scraper/src/scraper /home/vagrant/
 
 cd src/scraper
 
-# create virtal environment
-pipenv install -r requirements.txt
-
 # Cron for scheduling 
 # Adds a crontab for running scrapers every minute (currently)
 # to the root user

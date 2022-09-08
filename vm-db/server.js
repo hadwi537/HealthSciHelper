@@ -66,5 +66,13 @@ app.get("/papers", (req, res) => {
     });
 });
 
+app.post("/paper", (req, res) => {
+  db.collection("paper").insertOne(req.body.note, (err, result) => {
+    if (err) return console.log(err);
+
+    console.log("saved to database");
+    res.send({ reply: "Paper was saved.", contents: req.body.note });
+  });
+});
 
 app.listen(port, () => console.log(`App listening on port ${port}`));

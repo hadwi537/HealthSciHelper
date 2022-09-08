@@ -104,6 +104,7 @@ for subject in subject_to_html.keys(): #tABLES ARE options for degree + all pape
         print("An exception has occured")
         print(e)
     
+    # for testing purposes
     if (len(paper_list) > 10):
         break
 

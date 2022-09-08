@@ -1,13 +1,13 @@
 #!/bin/bash
 
-apt-get update && sudo apt upgrade
+apt-get update && sudo apt upgrade -y
 
 # Change VM's API's configuration to use the shared folder.
 # We want to copy it across so runs with linux permissions
 # and not a network folder
-
 cp -r /vagrant/vm-scraper/src/scraper /home/vagrant/
 
+# move to project folder
 cd src/scraper
 
 # Cron for scheduling 
@@ -16,7 +16,7 @@ cd src/scraper
 
 # Cron expression
 # Executes every 2nd day at midnight every month
-cronExpression="0 0 2 * * pipenv run python /home/vagrant/vm-scraper/src/scraper/scraper.py"
+cronExpression="0 0 2 * * pipenv run python /home/vagrant/scraper/scraper.py"
 
 # Escape all the asterisks so we can grep for it
 cron_escaped=$(echo "$cronExpression" | sed s/\*/\\\\*/g)
@@ -47,9 +47,6 @@ sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt update
 
 # install python and pip with yes to all prompts
-apt-get install -y python3
-apt-get install -y python3-pip
-apt-get install -y python3.8-venv
 apt-get install -y pipenv
 sudo apt install -y python3.10
 

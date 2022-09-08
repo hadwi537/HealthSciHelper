@@ -1,0 +1,11 @@
+{
+  "name": "vm-dbapp",
+  "version": "1.0.0",
+  "description": "databsae",
+  "main": "databaseApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "William Hadden",
+  "license": "ISC"
+}

@@ -57,7 +57,7 @@ app.use(function(req, res, next) {
 
 app.get("/", (req, res) => res.send("Hello World!\n"));
 
-
+// get paper collection
 app.get("/papers", (req, res) => {
   db.collection("papers")
     .find()
@@ -68,6 +68,7 @@ app.get("/papers", (req, res) => {
     });
 });
 
+// paper insertion 
 app.post("/paper", (req, res) => {
   db.collection("paper").insertOne(req.body.note, (err, result) => {
     if (err) return console.log(err);

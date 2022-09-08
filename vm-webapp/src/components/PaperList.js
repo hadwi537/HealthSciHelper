@@ -31,8 +31,8 @@ export default class NoteList extends React.Component {
       return (
         <ul className="paper-group pt-3 pb-5">
           {this.state.reply.map(paper => (
-            <li className="paper-group-item font-weight-bold" key={paper.paper_code}>
-              {paper.paper}{" "}
+            <li key={paper.paper_code}>
+              {paper.paper_code}{""}
               
             </li>
           ))}

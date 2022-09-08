@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 import React, { Component } from 'react'
 import PaperList from './components/PaperList'
+import Table from './components/table';
 
 
 class App extends Component {
@@ -18,13 +19,20 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <div className="row">
-            <div className="col" />
-            <div className="col-lg-7">
+
+            <div style = {{display: 'inline', float: 'left'}}>
               <PaperList />
             </div>
-            <div className="col" />
+
           </div>
         </div>
+
+        <div className='container'>
+          <h1> Health Sci Helper! </h1>
+          <p> visualising paper information </p>
+          <Table />
+        </div>
+
       </div>
     );
   

@@ -2,7 +2,7 @@ import './App.css';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 import React, { Component } from 'react'
-import PaperList from './components/'
+import PaperList from './components/PaperList'
 
 class App extends Component {
 

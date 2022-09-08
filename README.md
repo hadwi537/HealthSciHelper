@@ -131,5 +131,9 @@ $ npm run deploy
 # home page once published:
 "https://hadwi537.github.io/HealthSciHelper/"
 
+## local development
 
 * for database use npm start
+
+
+using cross-env package to avoid port collisions

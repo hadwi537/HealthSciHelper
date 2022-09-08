@@ -22,22 +22,17 @@ export default class NoteList extends React.Component {
       this.state.reply.length === 0
     ) {
       return (
-        <ul className="list-group pt-3">
-          <li className="list-group-item text-muted">No tasks to display</li>
+        <ul className="paper-group pt-3">
+          <li className="paper-group-item text-muted">No papers to display</li>
         </ul>
       );
     } else {
       return (
-        <ul className="list-group pt-3 pb-5">
-          {this.state.reply.map(note => (
-            <li className="list-group-item font-weight-bold" key={note._id}>
-              {note.note}{" "}
-              <button
-                className="btn btn-link float-right p-0 text-muted"
-                onClick={this.deleteOne.bind(this, note._id)}
-              >
-                ×
-              </button>
+        <ul className="paper-group pt-3 pb-5">
+          {this.state.reply.map(paper => (
+            <li className="paper-group-item font-weight-bold" key={paper.paper_code}>
+              {paper.paper}{" "}
+              
             </li>
           ))}
         </ul>

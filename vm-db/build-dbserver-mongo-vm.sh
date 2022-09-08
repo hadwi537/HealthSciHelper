@@ -1,5 +1,9 @@
 #!/bin/sh
 
+apt-get update
+sudo apt-get install -y nodejs
+
+cp /vagrant/vm-db /home/
 
 # Adding Repo
 echo "-------------------------- ADDING REPO -------------------------------------"
@@ -62,19 +66,27 @@ cp /vagrant/vm-db/mongod.conf /etc/
 echo "-------------------------- RESTARTED MONGOD --------------------------"
 sudo systemctl restart mongod
 
-# Need this to get 3.10
-sudo apt install software-properties-common -y
-sudo add-apt-repository ppa:deadsnakes/ppa -y
-sudo apt update
+cd vm-db
+npm install
 
-# install python and pip with yes to all prompts
-apt-get install -y python3
-apt-get install -y python3-pip
-apt-get install -y python3.8-venv
-apt-get install -y pipenv
-sudo apt install -y python3.10
+service mongod start &
+npm install forever -g
+forever start databaseApp.js &
 
-pipenv install pymongo
+# # Need this to get 3.10
+# sudo apt install software-properties-common -y
+# sudo add-apt-repository ppa:deadsnakes/ppa -y
+# sudo apt update
 
-# insert default values
-pipenv run python /vagrant/vm-db/setup-mongodb.py
+# # install python and pip with yes to all prompts
+# apt-get install -y python3
+# apt-get install -y python3-pip
+# apt-get install -y python3.8-venv
+# apt-get install -y pipenv
+# sudo apt install -y python3.10
+
+# pipenv install pymongo
+
+# # insert default values
+# pipenv run python /vagrant/vm-db/setup-mongodb.py
+

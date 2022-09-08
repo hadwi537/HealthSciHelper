@@ -2,3 +2,4 @@
 ubuntu-xenial-16.04-cloudimg-console.log
 vm-webapp/node_modules
 vm-webapp/build
+vm-db/node_modules

@@ -19,7 +19,7 @@ pipenv install -r requirements.txt
 
 # Cron expression
 # Executes every 2nd day at midnight every month
-cronExpression="0 0 2 * * pipenv run scraper/scraper.py"
+cronExpression="0 0 2 * * pipenv run python /home/vagrant/vm-scraper/src/scraper/scraper.py"
 
 # Escape all the asterisks so we can grep for it
 cron_escaped=$(echo "$cronExpression" | sed s/\*/\\\\*/g)

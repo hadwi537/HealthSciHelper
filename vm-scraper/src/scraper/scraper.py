@@ -4,8 +4,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from connect_to_mongo_db import connect_to_mongo_db
 import re
-import os
-import json 
+
 
 
 subject_to_html = dict()
